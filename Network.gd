@@ -17,10 +17,12 @@ func _ready() -> void:
 		ip_address = IP.get_local_addresses()[3]
 	
 	for ip in IP.get_local_addresses():
-		if ip.begins_with("192.168."):
+		if ip.begins_with("192.168.") and not ip.ends_with(".1"):
 			ip_address = ip
 	
+	# warning-ignore:return_value_discarded
 	get_tree().connect("connected_to_server", self, "_connected_to_server")
+	# warning-ignore:return_value_discarded
 	get_tree().connect("server_disconnected", self, "_server_disconnected")
 
 
