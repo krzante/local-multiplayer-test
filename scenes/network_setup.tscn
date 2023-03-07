@@ -1,0 +1,83 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/base_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/network_setup.gd" type="Script" id=2]
+
+[node name="NetworkSetup" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="MultiplayerConfigure" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="MultiplayerConfigure"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MultiplayerConfigure/CenterContainer"]
+margin_left = 610.0
+margin_top = 365.0
+margin_right = 1310.0
+margin_bottom = 715.0
+custom_constants/separation = 50
+
+[node name="ServerIpAddress" type="LineEdit" parent="MultiplayerConfigure/CenterContainer/VBoxContainer2"]
+margin_right = 700.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 700, 75 )
+custom_fonts/font = ExtResource( 1 )
+align = 1
+placeholder_text = "Enter IP Address"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MultiplayerConfigure/CenterContainer/VBoxContainer2"]
+margin_top = 125.0
+margin_right = 700.0
+margin_bottom = 350.0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="CreateServer" type="Button" parent="MultiplayerConfigure/CenterContainer/VBoxContainer2/VBoxContainer"]
+margin_right = 700.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 450, 100 )
+custom_fonts/font = ExtResource( 1 )
+text = "Create Server"
+
+[node name="JoinServer" type="Button" parent="MultiplayerConfigure/CenterContainer/VBoxContainer2/VBoxContainer"]
+margin_top = 125.0
+margin_right = 700.0
+margin_bottom = 225.0
+rect_min_size = Vector2( 450, 100 )
+custom_fonts/font = ExtResource( 1 )
+text = "Join Server"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="MultiplayerConfigure"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MultiplayerConfigure/CanvasLayer"]
+anchor_top = 0.917
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = 39.64
+margin_bottom = -50.0
+
+[node name="DeviceIpLabel" type="Label" parent="MultiplayerConfigure/CanvasLayer/HBoxContainer"]
+margin_right = 471.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 1 )
+text = "Device IP Address :"
+align = 1
+
+[node name="DeviceIp" type="Label" parent="MultiplayerConfigure/CanvasLayer/HBoxContainer"]
+margin_left = 475.0
+margin_right = 855.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 1 )
+text = "192.168.000.00"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="MultiplayerConfigure/CenterContainer/VBoxContainer2/VBoxContainer/CreateServer" to="." method="_on_CreateServer_pressed"]
+[connection signal="pressed" from="MultiplayerConfigure/CenterContainer/VBoxContainer2/VBoxContainer/JoinServer" to="." method="_on_JoinServer_pressed"]
